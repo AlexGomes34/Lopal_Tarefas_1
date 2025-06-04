@@ -11,15 +11,22 @@ import br.dev.eduardo.tarefas.dao.FuncionarioDAO;
 import br.dev.eduardo.tarefas.model.Funcionario;
 import br.dev.eduardo.tarefas.model.Tarefa;
 import br.dev.eduardo.tarefas.ui.FuncionarioFrame;
+import br.dev.eduardo.tarefas.ui.FuncionariosListaFrame;
 
 public class Main {
 
-	static String caminho = "/Users/25132675/tarefasDS1TA/tarefas";
+	static String caminho = "/Users/25132769/tarefas-DS1T-A/tarefas";
 	
 	public static void main(String[] args) {
 		
-		new FuncionarioFrame();
+		//FuncionarioDAO dao = new FuncionarioDAO(null);
+		//dao.getFuncionarios();
 		
+		new FuncionariosListaFrame();
+		//new FuncionarioFrame();
+		
+		//FuncionarioDAO dao = new FuncionarioDAO(null);
+		//dao.getFuncionarios();
 		
 //		UUID uuid = UUID.randomUUID();
 //		System.out.println(uuid);
