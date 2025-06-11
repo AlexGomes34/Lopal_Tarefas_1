@@ -12,6 +12,8 @@ import br.dev.eduardo.tarefas.model.Funcionario;
 import br.dev.eduardo.tarefas.model.Tarefa;
 import br.dev.eduardo.tarefas.ui.FuncionarioFrame;
 import br.dev.eduardo.tarefas.ui.FuncionariosListaFrame;
+import br.dev.eduardo.tarefas.ui.GerenciamentoFrame;
+import br.dev.eduardo.tarefas.ui.TarefaFrame;
 
 public class Main {
 
@@ -19,10 +21,14 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		new TarefaFrame(null);
+		
+		//new GerenciamentoFrame();
+		
 		//FuncionarioDAO dao = new FuncionarioDAO(null);
 		//dao.getFuncionarios();
 		
-		new FuncionariosListaFrame();
+		//new FuncionariosListaFrame();
 		//new FuncionarioFrame();
 		
 		//FuncionarioDAO dao = new FuncionarioDAO(null);

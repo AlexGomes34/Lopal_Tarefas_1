@@ -9,8 +9,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -21,6 +23,7 @@ import br.dev.eduardo.tarefas.model.Funcionario;
 public class FuncionariosListaFrame {
 
 	private JLabel labelTitulo;
+	private JButton btnSair;
 	private JButton btnNovo;
 	private JTable tabelaFunc;
 	private DefaultTableModel modelFunc;
@@ -28,15 +31,17 @@ public class FuncionariosListaFrame {
 	
 	private String[] colunas = {"CÓDIGO", "NOME DO FUNCIONARIO", "CARGO"};
 	
-	public FuncionariosListaFrame() {
-		criarTela();
+	
+	public FuncionariosListaFrame(JFrame tela) {
+		criarTela(tela);
 	}
 	
-	private void criarTela() {
+	private void criarTela(JFrame parent) {
 		
-		JFrame tela = new JFrame("Lista dos Funcionarios");
+		JDialog tela = new JDialog(parent, true);
+		tela.setTitle("Lista dos Funcionarios");
 		tela.setSize(600, 500);
-		tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		tela.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		tela.setResizable(false);
 		tela.setLayout(null);
 		tela.setLocationRelativeTo(null); 
@@ -58,6 +63,21 @@ public class FuncionariosListaFrame {
 		btnNovo = new JButton("Novo");
 		btnNovo.setBounds(10, 410, 150, 40);
 		
+		btnSair = new JButton("Sair");
+		btnSair.setBounds(180, 410, 150, 40);
+		
+        btnSair.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int resposta = JOptionPane.showConfirmDialog(tela, "Sair do sistema?");
+				if (resposta == 0) {
+					tela.dispose();	
+				}
+				
+			}
+		});
+		
 		btnNovo.addActionListener(new ActionListener() {
 			
 			@Override
@@ -66,11 +86,17 @@ public class FuncionariosListaFrame {
 				carregarDados();
 				
 			}
+
+		
+			
 		});
+		
+		
 		
 		painel.add(scroll);
 		painel.add(labelTitulo);
 		painel.add(btnNovo);
+		painel.add(btnSair);
 		
 		
 		tela.setVisible(true);
