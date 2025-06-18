@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -16,30 +17,29 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import br.dev.eduardo.tarefas.dao.TarefaDAO;
-import br.dev.eduardo.tarefas.model.Tarefa;
+import br.dev.eduardo.tarefas.dao.FuncionarioDAO;
+import br.dev.eduardo.tarefas.model.Funcionario;
 
-public class TarefaListaFrame {
-	
+public class FuncionariosListaFrame {
 
 	private JLabel labelTitulo;
 	private JButton btnSair;
 	private JButton btnNovo;
-	private JTable tabelaTarf;
-	private DefaultTableModel modelTarf;
+	private JTable tabelaFunc;
+	private DefaultTableModel modelFunc;
 	private JScrollPane scroll;
 	
-	private String[] colunas = {"CÓDIGO", "NOME", "RESPONSÁVEL" };
+	private String[] colunas = {"CÓDIGO", "NOME DO FUNCIONARIO", "CARGO"};
 	
 	
-	public TarefaListaFrame(JFrame tela) {
+	public FuncionariosListaFrame(JFrame tela) {
 		criarTela(tela);
 	}
 	
 	private void criarTela(JFrame parent) {
 		
 		JDialog tela = new JDialog(parent, true);
-		tela.setTitle("Lista das Tarefas");
+		tela.setTitle("Lista dos Funcionarios");
 		tela.setSize(600, 500);
 		tela.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		tela.setResizable(false);
@@ -48,17 +48,17 @@ public class TarefaListaFrame {
 		
 		Container painel = tela.getContentPane();
 		
-		labelTitulo = new JLabel("Cadastro de Tarefas");
+		labelTitulo = new JLabel("Cadastro de Funcionarios");
 		labelTitulo.setFont(new Font("Consolas", Font.BOLD, 28));
 		labelTitulo.setForeground(Color.BLACK);
 		labelTitulo.setBounds(10, 10, 400, 40);
 		
-		modelTarf = new DefaultTableModel(colunas, 1);
+		modelFunc = new DefaultTableModel(colunas, 1);
 		carregarDados();
-		tabelaTarf = new JTable(modelTarf);
-		scroll = new JScrollPane(tabelaTarf);
+		tabelaFunc = new JTable(modelFunc);
+		scroll = new JScrollPane(tabelaFunc);
 		scroll.setBounds(10, 60, 580, 340);
-		tabelaTarf.setBounds(10, 60, 580, 340);
+		tabelaFunc.setBounds(10, 60, 580, 340);
 		
 		btnNovo = new JButton("Novo");
 		btnNovo.setBounds(10, 410, 150, 40);
@@ -82,7 +82,7 @@ public class TarefaListaFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new TarefaFrame(tela);
+				new FuncionarioFrame(tela);
 				carregarDados();
 				
 			}
@@ -106,21 +106,21 @@ public class TarefaListaFrame {
 
 	private Object[][] carregarDados() {
 		//Obter os dados que serão exibidos na tabela
-		TarefaDAO dao = new TarefaDAO(null);
-		List<Tarefa> tarefa = dao.getTarefa();
+		FuncionarioDAO dao = new FuncionarioDAO(null);
+		List<Funcionario> funcionarios = dao.getFuncionarios();
 		
-		Object[][] dados = new Object [tarefa.size()][3];
-
+		Object[][] dados = new Object[funcionarios.size()][3];
+		
 		int i = 0;
-		for (Tarefa tr : tarefa) {
-			dados[i][0] = tr.getCodigo();
-			dados[i][1] = tr.getNome();
-			dados[i][2] = tr.getResponsavel();
+		for (Funcionario f : funcionarios) {
+			dados[i][0] = f.getMatricula();
+			dados[i][1] = f.getNome();
+			dados[i][2] = f.getCargo();
 			i++;
 			
 			
 		}
-		modelTarf.setDataVector(dados, colunas);
+		modelFunc.setDataVector(dados, colunas);
 		return dados;
 	}
 	

@@ -3,22 +3,13 @@ package br.dev.eduardo.tarefas.ui;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
-import br.dev.eduardo.tarefas.dao.FuncionarioDAO;
-import br.dev.eduardo.tarefas.dao.TarefaDAO;
-import br.dev.eduardo.tarefas.model.Funcionario;
-import br.dev.eduardo.tarefas.model.Status;
-import br.dev.eduardo.tarefas.model.Tarefa;
 
 public class TarefaFrame {
 	
@@ -50,9 +41,8 @@ public class TarefaFrame {
 		JLabel labelResponsavel = new JLabel("Responsável");
 		labelResponsavel.setBounds(10, 160, 150, 30);
 		
-		List<Funcionario> funcionario = new FuncionarioDAO(null).getFuncionarios();
-		JComboBox<Funcionario> comboResp = new JComboBox<>(funcionario.toArray(new Funcionario[0])); 
-		comboResp.setBounds(5, 200, 150, 30);
+		JTextField textResponsavel = new JTextField();
+		textResponsavel.setBounds(5, 200, 150, 30);
 		
 		JLabel labelDataInicio = new JLabel("Data de Início");
 		labelDataInicio.setBounds(10, 240, 150, 30);
@@ -75,8 +65,8 @@ public class TarefaFrame {
 		JLabel labelStatus = new JLabel("Status");
 		labelStatus.setBounds(10, 480, 150, 30);
 		
-		JComboBox<Status> comboStat = new JComboBox<>(Status.values());
-		comboStat.setBounds(5, 520, 150, 30);
+		JTextField textStatus =  new JTextField();
+		textStatus.setBounds(5, 520, 150, 30);
 		
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.setBounds(5, 570, 150, 30);
@@ -90,7 +80,7 @@ public class TarefaFrame {
 		painel.add(labelDescricaoTarefa);
 		painel.add(textDescricaoTarefa);
 		painel.add(labelResponsavel);
-		painel.add(comboResp);
+		painel.add(textResponsavel);
 		painel.add(labelDataInicio);
 		painel.add(textDataInicio);
 		painel.add(labelPrazo);
@@ -98,7 +88,7 @@ public class TarefaFrame {
 		painel.add(labelDataPrevEntrega);
 		painel.add(textDataPrevEntrega);
 		painel.add(labelStatus);
-		painel.add(comboStat);
+		painel.add(textStatus);
 		painel.add(btnSalvar);
 		painel.add(btnSair);
 		
@@ -106,25 +96,7 @@ public class TarefaFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				Tarefa tr = new Tarefa();
-				tr.setNome(textNomeTarefa.getText());
-				tr.setDescricao(textDescricaoTarefa.getText());
-				tr.setResponsavel(comboResp.getSelectedItem().toString());
-				tr.setDataInicio(textDataInicio.getText());
-				tr.setPrazo(Integer.parseInt(textPrazo.getText()));
-				tr.setDataPrevisaoDeEntrega(textDataPrevEntrega.getText());
-				tr.setStatus(comboStat.getSelectedItem().toString());
-				tr.setDataEntrega(null);
-				
-				TarefaDAO dao = new TarefaDAO(tr);
-				dao.salvar();
-				
-				JOptionPane.showMessageDialog(tela, tr.getNome() + " gravado com sucesso!");
-				
-				textNomeTarefa.setText(null);
-				textNomeTarefa.requestFocus();
-				
+				// TODO Auto-generated method stub
 				
 			}
 		});

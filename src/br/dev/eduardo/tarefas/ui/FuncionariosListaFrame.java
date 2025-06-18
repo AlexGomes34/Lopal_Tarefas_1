@@ -21,7 +21,7 @@ import br.dev.eduardo.tarefas.dao.FuncionarioDAO;
 import br.dev.eduardo.tarefas.model.Funcionario;
 
 public class FuncionariosListaFrame {
-
+	
 	private JLabel labelTitulo;
 	private JButton btnSair;
 	private JButton btnNovo;

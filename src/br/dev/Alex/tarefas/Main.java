@@ -14,7 +14,6 @@ import br.dev.eduardo.tarefas.ui.FuncionarioFrame;
 import br.dev.eduardo.tarefas.ui.FuncionariosListaFrame;
 import br.dev.eduardo.tarefas.ui.GerenciamentoFrame;
 import br.dev.eduardo.tarefas.ui.TarefaFrame;
-import br.dev.eduardo.tarefas.ui.TarefaListaFrame;
 
 public class Main {
 
@@ -22,9 +21,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		//new TarefaListaFrame(null);
-		
-		//new TarefaFrame(null);
+		new TarefaFrame(null);
 		
 		new GerenciamentoFrame();
 		

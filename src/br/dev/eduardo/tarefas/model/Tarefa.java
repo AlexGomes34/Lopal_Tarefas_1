@@ -2,24 +2,35 @@ package br.dev.eduardo.tarefas.model;
 
 import java.time.LocalDate;
 
+import br.dev.eduardo.tarefas.utils.Utils;
+
 public class Tarefa {
 
+	private String codigo;
 	private String nome;
 	private String descricao;
-	private LocalDate dataInicio;
+	private String dataInicio;
 	private int prazo;
-	private LocalDate dataPrevisaoDeEntrega;
+	private String dataPrevisaoDeEntrega;
 	private LocalDate dataEntrega;
-	private Status status;
-	private Funcionario responsavel;
+	private String status;
+	private String responsavel;
 
 	public Tarefa() {
-		System.out.println("Criando uma tarefa...");
+		this.codigo = 	Utils.gerarUUID8();
 	}
 	
-	public Tarefa(String nome) {
-		System.out.println("Criando a tarefa " + nome);
-		this.nome = nome;
+//	public Tarefa(String nome) {
+//		System.out.println("Criando a tarefa " + nome);
+//		this.nome = nome;
+//	}
+	
+	public String getCodigo() {
+		return codigo;
+	}
+	
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	
 	public String getNome() {
@@ -38,12 +49,12 @@ public class Tarefa {
 		this.descricao = descricao;
 	}
 
-	public LocalDate getDataInicio() {
+	public String getDataInicio() {
 		return dataInicio;
 	}
 
-	public void setDataInicio(LocalDate dataInicio) {
-		this.dataInicio = dataInicio;
+	public void setDataInicio(String string) {
+		this.dataInicio = string;
 	}
 
 	public int getPrazo() {
@@ -54,12 +65,12 @@ public class Tarefa {
 		this.prazo = prazo;
 	}
 
-	public LocalDate getDataPrevisaoDeEntrega() {
+	public String getDataPrevisaoDeEntrega() {
 		return dataPrevisaoDeEntrega;
 	}
 
-	public void setDataPrevisaoDeEntrega(LocalDate dataPrevisaoDeEntrega) {
-		this.dataPrevisaoDeEntrega = dataPrevisaoDeEntrega;
+	public void setDataPrevisaoDeEntrega(String string) {
+		this.dataPrevisaoDeEntrega = string;
 	}
 
 	public LocalDate getDataEntrega() {
@@ -70,20 +81,24 @@ public class Tarefa {
 		this.dataEntrega = dataEntrega;
 	}
 
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
-		this.status = status;
+	public void setStatus(String string) {
+		this.status = string;
 	}
 
-	public Funcionario getResponsavel() {
+	public String getResponsavel() {
 		return responsavel;
 	}
 
-	public void setResponsavel(Funcionario responsavel) {
-		this.responsavel = responsavel;
+	public void setResponsavel(String string) {
+		this.responsavel = string;
+	}
+	
+	public String toString() {
+		return codigo + ", " + nome +  ", " + descricao + ", " + dataInicio + ", " + prazo + ", " + dataPrevisaoDeEntrega + ", " + dataEntrega + ", " + status + ", " + responsavel + "\n"; 		
 	}
 
 }
